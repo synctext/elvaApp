@@ -4,42 +4,15 @@
     android:layout_height="match_parent" >
 
     <!-- The main content view -->
-
     <LinearLayout
-        android:id="@+id/content_frame"
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1" >
-
-            <fragment
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/project_title"
-                android:layout_width="match_parent"
-                android:layout_height="40dip"
-                android:layout_alignParentBottom="true"
-                android:background="@color/ELVA_BLUE"
-                android:paddingLeft="10dip"
-                android:textColor="@android:color/white" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/project_description"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="2"
-            android:background="@android:color/white"
-            android:paddingLeft="10dip" />
+        android:background="@color/ELVA_BLUE"
+        android:orientation="vertical">
+        
     </LinearLayout>
+
     <!-- The navigation drawer -->
 
     <ListView

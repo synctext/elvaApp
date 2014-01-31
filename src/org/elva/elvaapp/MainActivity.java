@@ -1,37 +1,30 @@
 package org.elva.elvaapp;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.LatLng;
-
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity  {
 	private String[] mMenuItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-	private Typeface t;
-	private TextView projectTitle;
-	private TextView projectDescription;
+//	private Typeface t;
+//	private TextView projectTitle;
+//	private TextView projectDescription;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,33 +71,8 @@ public class MainActivity extends ActionBarActivity {
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		
-		// Map view
-		setUpMap();
-		
-		projectTitle = (TextView)findViewById(R.id.project_title);
-		t = Typeface.createFromAsset(this.getAssets(),"fonts/Roboto-Light.ttf");
-		projectTitle.setTypeface(t);
-		projectTitle.setText(R.string.project_title);
-		projectTitle.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-		
-		projectDescription = (TextView)findViewById(R.id.project_description);
-		projectDescription.setTypeface(t);
-		projectDescription.setText(R.string.lorem_ipsum);
-
-
 	}
 
-	private void setUpMap() {
-		// Get a handle to the Map Fragment
-        GoogleMap map = ((MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map)).getMap();
-
-        LatLng location = new LatLng(53.219396,6.566391);
-        map.setMyLocationEnabled(false);
-        map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.getUiSettings().setZoomControlsEnabled(false);
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
-	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// The action bar home/up action should open or close the drawer.
@@ -127,7 +95,16 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onItemClick(AdapterView parent, View view, int position,
 				long id) {
-			// selectItem(position);
+			if(position == 0){
+				Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
+				startActivity(intent);
+				
+			}
+			
+			if(position == 1){
+				Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
+				startActivity(intent);
+			}
 		}
 	}
 
