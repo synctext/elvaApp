@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 public class ProjectActivity extends ActionBarActivity {
@@ -28,6 +29,8 @@ public class ProjectActivity extends ActionBarActivity {
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
+		actionBar.setBackgroundDrawable(getResources().getDrawable(R.color.ELVA_WHITE));
+
 		
 		// Map view
 				setUpMap();
@@ -45,7 +48,7 @@ public class ProjectActivity extends ActionBarActivity {
 
 	private void setUpMap() {
 		// Get a handle to the Map Fragment
-        GoogleMap map = ((MapFragment) getFragmentManager()
+        GoogleMap map = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
 
         LatLng location = new LatLng(53.219396,6.566391);

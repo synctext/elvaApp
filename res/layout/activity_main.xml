@@ -8,8 +8,9 @@
         android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/ELVA_BLUE"
+        android:background="@color/ELVA_GREY"
         android:orientation="vertical">
+
         
     </LinearLayout>
 
@@ -22,7 +23,7 @@
         android:layout_gravity="start"
         android:background="#f5f5f5"
         android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
+        android:divider="@color/ELVA_GREY"
         android:dividerHeight="0dp" />
 
 </android.support.v4.widget.DrawerLayout>
