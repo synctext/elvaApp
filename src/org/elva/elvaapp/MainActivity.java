@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity  {
 //	private Typeface t;
 //	private TextView projectTitle;
 //	private TextView projectDescription;
- //TESTUHH!!
+ //TESTUHH!!??
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
