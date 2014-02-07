@@ -1,11 +1,9 @@
 package org.elva.elvaapp;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import org.elva.elvaapp.cards.*;
@@ -24,7 +22,7 @@ public class ProjectsOverviewActivity extends ActionBarActivity {
 		
 		CardListView list = (CardListView)findViewById(android.R.id.list);
 
-		CardAdapter adapter = new CardAdapter(this)
+		CardAdapter<Card> adapter = new CardAdapter<Card>(this)
 		    // This sets the color displayed for card titles and header actions by default
 		    .setAccentColorRes(R.color.ELVA_BLUE);
 
