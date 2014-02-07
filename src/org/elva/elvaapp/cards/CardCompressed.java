@@ -1,4 +1,6 @@
-package org.elva.elvaapp;
+package org.elva.elvaapp.cards;
+
+import org.elva.elvaapp.R;
 
 import android.content.Context;
 

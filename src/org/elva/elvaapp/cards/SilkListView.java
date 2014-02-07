@@ -1,4 +1,4 @@
-package org.elva.elvaapp;
+package org.elva.elvaapp.cards;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.AbsListView;

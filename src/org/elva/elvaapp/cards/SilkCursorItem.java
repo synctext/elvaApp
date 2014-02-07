@@ -1,4 +1,4 @@
-package org.elva.elvaapp;
+package org.elva.elvaapp.cards;
 
 import android.content.ContentValues;
 import android.database.Cursor;

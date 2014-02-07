@@ -3,9 +3,9 @@
 
     <LinearLayout style="@style/card_header_inner">
 
-        <org.elva.elvaapp.LightItalicTextView android:id="@android:id/title" style="@style/card_header_title"/>
+        <org.elva.elvaapp.cards.LightItalicTextView android:id="@android:id/title" style="@style/card_header_title"/>
 
-        <org.elva.elvaapp.SilkTextView android:id="@android:id/content"
+        <org.elva.elvaapp.cards.SilkTextView android:id="@android:id/content"
                                                      style="@style/card_header_summary"/>
 
     </LinearLayout>

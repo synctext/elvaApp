@@ -1,18 +1,25 @@
-package org.elva.elvaapp;
+package org.elva.elvaapp.cards;
 
+import org.elva.elvaapp.R;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.SparseIntArray;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 /**
+ * A {@link SilkAdapter} that displays {@link Card} and {@link CardHeader} objects in a {@link CardListView}.
+ *
  * @author Aidan Follestad (afollestad)
  */
-public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorItem<ItemType>> extends SilkCursorAdapter<ItemType> {
+public class CardAdapter<ItemType extends CardBase<ItemType>> extends SilkAdapter<ItemType> {
 
     private final static int TYPE_REGULAR = 0;
     private final static int TYPE_NO_CONTENT = 1;
@@ -30,12 +37,12 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
     private final int mLayoutHeader = R.layout.list_item_header;
 
     /**
-     * Initializes a new CardCursorAdapter instance.
+     * Initializes a new CardAdapter instance.
      *
      * @param context The context used to inflate layouts and retrieve resources.
      */
-    public CardCursorAdapter(Context context, Class<? extends SilkCursorItem> cls) {
-        super(context, cls);
+    public CardAdapter(Context context) {
+        super(context);
         mAccentColor = context.getResources().getColor(android.R.color.black);
         mViewTypes = new SparseIntArray();
         registerLayout(R.layout.list_item_header_centered);
@@ -43,19 +50,19 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
     }
 
     /**
-     * Initializes a new CardCursorAdapter instance.
+     * Initializes a new CardAdapter instance.
      *
      * @param context       The context used to inflate layouts and retrieve resources.
      * @param cardLayoutRes Sets a custom layout to be used for all cards (not including headers) in the adapter.
      *                      This <b>does not</b> override layouts set to individual cards.
      */
-    public CardCursorAdapter(Context context, Class<? extends SilkCursorItem> cls, int cardLayoutRes) {
-        this(context, cls);
+    public CardAdapter(Context context, int cardLayoutRes) {
+        this(context);
         mLayout = cardLayoutRes;
     }
 
     /**
-     * Initializes a new CardCursorAdapter instance.
+     * Initializes a new CardAdapter instance.
      *
      * @param context                The context used to inflate layouts and retrieve resources.
      * @param cardLayoutRes          Sets a custom layout to be used for all cards (not including headers) in the adapter.
@@ -63,9 +70,26 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
      * @param cardLayoutNoContentRes Sets a custom layout to be used for all cards (not including headers) in the
      *                               adapter with null content. This <b>does not</b> override layouts set to individual cards.
      */
-    public CardCursorAdapter(Context context, Class<? extends SilkCursorItem> cls, int cardLayoutRes, int cardLayoutNoContentRes) {
-        this(context, cls, cardLayoutRes);
+    public CardAdapter(Context context, int cardLayoutRes, int cardLayoutNoContentRes) {
+        this(context, cardLayoutRes);
         mLayoutNoContent = cardLayoutNoContentRes;
+    }
+
+    public static void setupTouchDelegate(Context context, final View menu) {
+        final int offset = context.getResources().getDimensionPixelSize(R.dimen.card_action_touchdelegate);
+        assert menu.getParent() != null;
+        ((View) menu.getParent()).post(new Runnable() {
+            public void run() {
+                Rect delegateArea = new Rect();
+                menu.getHitRect(delegateArea);
+                delegateArea.top -= offset;
+                delegateArea.bottom += offset;
+                delegateArea.left -= offset;
+                delegateArea.right += offset;
+                TouchDelegate expandedArea = new TouchDelegate(delegateArea, menu);
+                ((View) menu.getParent()).setTouchDelegate(expandedArea);
+            }
+        });
     }
 
     @Override
@@ -83,7 +107,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
      *
      * @param color The resolved color to use as an accent.
      */
-    public final CardCursorAdapter<ItemType> setAccentColor(int color) {
+    public final CardAdapter<ItemType> setAccentColor(int color) {
         mAccentColor = color;
         return this;
     }
@@ -94,7 +118,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
      *
      * @param colorRes The color resource ID to use as an accent.
      */
-    public final CardCursorAdapter<ItemType> setAccentColorRes(int colorRes) {
+    public final CardAdapter<ItemType> setAccentColorRes(int colorRes) {
         setAccentColor(getContext().getResources().getColor(colorRes));
         return this;
     }
@@ -106,7 +130,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
      * @param menuRes  The menu resource ID to use for the card's popup menu.
      * @param listener A listener invoked when an option in the popup menu is tapped by the user.
      */
-    public final CardCursorAdapter<ItemType> setPopupMenu(int menuRes, Card.CardMenuListener<ItemType> listener) {
+    public final CardAdapter<ItemType> setPopupMenu(int menuRes, Card.CardMenuListener<ItemType> listener) {
         mPopupMenu = menuRes;
         mPopupListener = listener;
         return this;
@@ -121,7 +145,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
      * and the list's OnItemClickListener will not be called. This <b>will</b> override individual isClickable values
      * set to {@link Card}s.
      */
-    public final CardCursorAdapter<ItemType> setCardsClickable(boolean clickable) {
+    public final CardAdapter<ItemType> setCardsClickable(boolean clickable) {
         mCardsClickable = clickable;
         return this;
     }
@@ -168,7 +192,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
 
     private void invalidatePadding(int index, View view) {
         int top = index == 0 ? R.dimen.card_outer_padding_firstlast : R.dimen.card_outer_padding_top;
-        int bottom = index == (getCount() - 1) ? R.dimen.card_outer_padding_firstlast : R.dimen.card_outer_padding_top;
+        int bottom = index == (getCount() - 1) ? R.dimen.card_outer_padding_firstlast : R.dimen.card_outer_padding_bottom;
         view.setPadding(view.getPaddingLeft(),
                 getContext().getResources().getDimensionPixelSize(top),
                 view.getPaddingRight(),
@@ -222,7 +246,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
      * <p/>
      * This must be used if you override getLayout() and specify custom layouts for certain list items.
      */
-    public final CardCursorAdapter<ItemType> registerLayout(int layoutRes) {
+    public final CardAdapter<ItemType> registerLayout(int layoutRes) {
         if (layoutRes == mLayout || layoutRes == mLayoutNoContent || layoutRes == mLayoutHeader) return this;
         mViewTypes.put(layoutRes, mViewTypes.size() + DEFAULT_TYPE_COUNT);
         return this;
@@ -270,7 +294,8 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
         return false;
     }
 
-    protected boolean onProcessMenu(final View view, final ItemType card) {
+    @SuppressLint("NewApi")
+	protected boolean onProcessMenu(final View view, final ItemType card) {
         if (card.getPopupMenu() < 0) {
             // Menu for this card is disabled
             return false;
@@ -281,7 +306,7 @@ public class CardCursorAdapter<ItemType extends CardBase<ItemType> & SilkCursorI
             // No menu for the adapter or the card
             return false;
         }
-        CardAdapter.setupTouchDelegate(getContext(), view);
+        setupTouchDelegate(getContext(), view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
