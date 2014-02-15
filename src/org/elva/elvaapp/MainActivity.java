@@ -107,6 +107,11 @@ public class MainActivity extends ActionBarActivity  {
 				Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
 				startActivity(intent);
 			}
+			
+			if(position == 2){
+				Intent intent = new Intent(getApplicationContext(), QuestionnaireActivity.class);
+				startActivity(intent);
+			}
 		}
 	}
 

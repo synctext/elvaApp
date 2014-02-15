@@ -8,6 +8,7 @@
     <string-array name="menu_array">
         <item>Project View</item>
         <item>Projects list</item>
+        <item>Questionnaire</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -18,6 +19,7 @@
 Ut vel nisi quis tellus interdum pharetra eu eget arcu. Quisque convallis libero id pellentesque sollicitudin. Sed rutrum neque erat, non placerat velit aliquam et. Vestibulum ac hendrerit elit, ac tincidunt mi. Vivamus id porttitor neque, vitae lobortis augue. Vestibulum sodales auctor dolor eu blandit. Aenean malesuada diam vitae justo gravida, vel lobortis lacus laoreet. Suspendisse sed risus ipsum.</string>
     <string name="title_activity_projects_overview">Projects Overview</string>
     <string name="title_activity_project">Project</string>
+    <string name="title_activity_questionnaire">Project</string>
     <string name="see_more">See More</string>
 
 </resources>

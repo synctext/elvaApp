@@ -1,5 +1,6 @@
 package org.elva.elvaapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -29,7 +30,11 @@ public class ProjectActivity extends ActionBarActivity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setBackgroundDrawable(getResources().getDrawable(R.color.ELVA_WHITE));
+		
+		Intent intent = this.getIntent();
+		String cardTitle = intent.getStringExtra("cardTitle");
 
+		
 		
 		// Map view
 				setUpMap();
@@ -37,7 +42,7 @@ public class ProjectActivity extends ActionBarActivity {
 				projectTitle = (TextView)findViewById(R.id.project_title);
 				t = Typeface.createFromAsset(this.getAssets(),"fonts/Roboto-Light.ttf");
 				projectTitle.setTypeface(t);
-				projectTitle.setText(R.string.project_title);
+				projectTitle.setText(cardTitle);
 				projectTitle.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 				
 				projectDescription = (TextView)findViewById(R.id.project_description);
@@ -51,7 +56,8 @@ public class ProjectActivity extends ActionBarActivity {
                 .findFragmentById(R.id.map)).getMap();
 
         LatLng location = new LatLng(53.219396,6.566391);
-        map.setMyLocationEnabled(false);
+        
+        map.setMyLocationEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(false);
         map.getUiSettings().setZoomControlsEnabled(false);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));

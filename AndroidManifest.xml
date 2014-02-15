@@ -50,6 +50,10 @@
             android:name="org.elva.elvaapp.ProjectActivity"
             android:label="@string/title_activity_project" >
         </activity>
+        <activity
+            android:name="org.elva.elvaapp.QuestionnaireActivity"
+            android:label="@string/title_activity_questionnaire" >
+        </activity>
     </application>
 
 </manifest>
