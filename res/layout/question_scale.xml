@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- suppress AndroidLintUselessParent -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/card_outer" >
+
+    <RelativeLayout
+        android:id="@+id/inner_frame"
+        style="@style/card_inner" >
+
+        <!-- suppress AndroidLintContentDescription -->
+
+        <ImageView
+            android:id="@android:id/icon"
+            style="@style/card_thumbnail"
+            tools:ignore="ContentDescription" />
+
+        <RelativeLayout
+            android:id="@+id/titleFrame"
+            style="@style/card_title_frame" >
+
+            <TextView
+                android:id="@android:id/title"
+                style="@style/card_title" />
+
+            <!-- suppress AndroidLintContentDescription -->
+
+            <ImageButton
+                android:id="@android:id/button1"
+                style="@style/card_popup_anchor"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleFrame"
+            android:text="Min" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/min"
+            android:max="100" >
+        </SeekBar>
+
+        <TextView
+            android:id="@+id/max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/seekbar"
+            android:layout_alignRight="@+id/seekbar"
+            android:text="Max" />
+
+        <TextView
+            android:id="@+id/progress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/seekbar"
+            android:layout_toLeftOf="@id/max"
+            android:layout_toRightOf="@id/min"
+            android:gravity="center"
+            android:text="Progress" />
+    </RelativeLayout>
+
+    <!-- suppress AndroidLintContentDescription -->
+
+    <ImageView
+        style="@style/card_shadow"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

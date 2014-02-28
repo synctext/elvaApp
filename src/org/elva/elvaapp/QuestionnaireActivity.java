@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Toast;
 import org.elva.elvaapp.cards.*;
 
@@ -32,10 +33,13 @@ public class QuestionnaireActivity extends ActionBarActivity {
 
 		// Add a RadioCard
 		adapter.add(new RadioCard("Question?", new String[] {"Antwoord 1","Antwoord 2","Antwoord 3"}));
+		adapter.add(new SeekBarCard("Question", 0, 100, 50));
+		adapter.add(new TextCard("Question"));
 
 
 		list.setAdapter(adapter);
-
+				
+		// get result on buttonclick
 		GetContent = (Button)this.findViewById(R.id.button1);
 		GetContent.setOnClickListener(new View.OnClickListener() {
 
@@ -48,7 +52,7 @@ public class QuestionnaireActivity extends ActionBarActivity {
 					
 					// If it is a RadioCard
 					if(adapter.getItem(i).getClass().getSimpleName().equals("RadioCard") ){
-						RadioGroup rg =(RadioGroup)((RadioCard)adapter.getItem(0)).getView().findViewById(R.id.radioGroup);
+						RadioGroup rg =(RadioGroup)((RadioCard)adapter.getItem(i)).getView().findViewById(R.id.radioGroup);
 						int selected = rg.getCheckedRadioButtonId();
 						String toast = "Nothing selected!";
 						if(selected != -1){
@@ -56,6 +60,13 @@ public class QuestionnaireActivity extends ActionBarActivity {
 							toast = rb.getText().toString();
 						}
 						Toast.makeText(getApplicationContext(), toast, Toast.LENGTH_SHORT).show();
+					}
+					// If it is a SeekBarCard
+					if(adapter.getItem(i).getClass().getSimpleName().equals("SeekBarCard") ){
+						SeekBar sb =(SeekBar)((SeekBarCard)adapter.getItem(i)).getView().findViewById(R.id.seekbar);
+						int progress = sb.getProgress();
+						String toast = "" + progress;
+						Toast.makeText(getApplicationContext(), toast, Toast.LENGTH_LONG).show();
 					}
 				}
 
