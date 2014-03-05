@@ -24,7 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements LocationFragment.OnHeadlineSelectedListener {
 	private String[] mMenuItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -90,9 +90,37 @@ public class MainActivity extends ActionBarActivity {
 		Project project = new Project(location, "test project", "test desciption");
 		Questionaire questionaire = new Questionaire(project, "test questionaire");
 		Question question = new Question(questionaire, "test question");
+		
+		Location location2 = new Location("test location2");
+		Project project2 = new Project(location2, "test project", "test desciption2");
+		Questionaire questionaire2 = new Questionaire(project2, "test questionaire2");
+		Question question2 = new Question(questionaire2, "test question2");
+		
 		new Data();
 		Data.addLocation(location);
+		Data.addLocation(location2);
 	}
+	
+	   public void onArticleSelected(int position) {
+	        // The user selected the headline of an article from the HeadlinesFragment
+
+	        // Capture the article fragment from the activity layout
+	        LocationFragment locationFrag = (LocationFragment)
+	                getSupportFragmentManager().findFragmentById(R.id.content_frame);
+
+	        if (locationFrag != null) {
+	            // If article frag is available, we're in two-pane layout...
+
+	            // Call a method in the ArticleFragment to update its content
+				Fragment f = (Fragment) new ProjectsFragment();
+				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+				ft.replace(R.id.content_frame, f);
+				ft.commit();
+
+	        } else {
+
+	        }
+	    }
 
 	public void selectItem(int position) {
 		switch (position) {

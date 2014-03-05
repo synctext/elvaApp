@@ -24,6 +24,14 @@ public class Location {
 		return name;
 	}
 	
+	public ArrayList<String> getProjectNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		for (Project project : projects) {
+			names.add(project.getName());
+		}
+		return names;
+	}
+	
 	public void addProject(Project project){
 		projects.add(project);
 	}
