@@ -20,7 +20,10 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     android:paddingRight="16dp"
-    android:textColor="#333333"
-    android:background="@color/ELVA_BLUE"
+    android:textColor="#FFFFFF"
+    android:background="@null"
+    android:textSize="28sp"
     android:minHeight="30dp"/>

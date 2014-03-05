@@ -6,9 +6,12 @@
     <string name="hello_world">Hello world!</string>
 
     <string-array name="menu_array">
+        <item>Projects</item>
+        <item>Location</item>
         <item>Project View</item>
         <item>Projects list</item>
         <item>Questionnaire</item>
+        
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>

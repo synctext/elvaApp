@@ -112,10 +112,7 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 	            // If article frag is available, we're in two-pane layout...
 
 	            // Call a method in the ArticleFragment to update its content
-				Fragment f = (Fragment) new ProjectsFragment();
-				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-				ft.replace(R.id.content_frame, f);
-				ft.commit();
+				selectItem(1);
 
 	        } else {
 
@@ -124,14 +121,20 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 
 	public void selectItem(int position) {
 		switch (position) {
-		case 0: // select location
+		case 0: {// select location
 			Fragment f = (Fragment) new LocationFragment();
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			ft.replace(R.id.content_frame, f);
 			ft.commit();
 			break;
-		case 1: // select project
+		}
+		case 1: {
+			Fragment f = (Fragment) new ProjectsFragment();
+			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+			ft.replace(R.id.content_frame, f);
+			ft.commit();
 			break;
+		}
 		}
 
 	}
@@ -156,19 +159,28 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView parent, View view, int position, long id) {
+			mDrawerLayout.closeDrawers();
 
 			switch (position) {
 			case 0: {
-				Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
-				startActivity(intent);
+				selectItem(1);
 				break;
 			}
 			case 1: {
+				selectItem(0);
+				break;
+			}
+			case 2: {
+				Intent intent = new Intent(getApplicationContext(), QuestionnaireActivity.class);
+				startActivity(intent);
+				break;
+			}
+			case 3: {
 				Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
 				startActivity(intent);
 				break;
 			}
-			case 2: {
+			case 4: {
 				Intent intent = new Intent(getApplicationContext(), QuestionnaireActivity.class);
 				startActivity(intent);
 				break;
