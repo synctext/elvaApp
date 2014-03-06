@@ -24,5 +24,6 @@ Ut vel nisi quis tellus interdum pharetra eu eget arcu. Quisque convallis libero
     <string name="title_activity_project">Project</string>
     <string name="title_activity_questionnaire">Project</string>
     <string name="see_more">See More</string>
-
+    <string name="start_questionaire">Start questionaire</string>
+    
 </resources>

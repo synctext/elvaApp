@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -89,5 +90,12 @@ public class ProjectActivity extends ActionBarActivity {
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
+
+	
+	public void startQuestionaire(View v){
+		Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
+		startActivity(intent);
+	}
+	
 	
 }

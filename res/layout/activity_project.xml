@@ -25,6 +25,8 @@
             android:textColor="@android:color/white" />
     </RelativeLayout>
 
+   
+
     <TextView
         android:id="@+id/project_description"
         android:layout_width="match_parent"
@@ -32,5 +34,13 @@
         android:layout_weight="2"
         android:background="@android:color/white"
         android:paddingLeft="10dip" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:onClick="startQuestionaire"
+        android:text="@string/start_questionaire" />
 
 </LinearLayout>

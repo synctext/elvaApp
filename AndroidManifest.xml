@@ -30,8 +30,8 @@
 
         <activity
             android:name="org.elva.elvaapp.MainActivity"
-            android:label="@string/app_name" 
-            android:launchMode="singleTop">
+            android:label="@string/app_name"
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,7 +45,13 @@
 
         <activity
             android:name="org.elva.elvaapp.ProjectsOverviewActivity"
-            android:label="@string/title_activity_projects_overview" >
+            android:label="@string/title_activity_projects_overview"
+            android:parentActivityName="org.elva.elvaapp.ProjectActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.elva.elvaapp.ProjectActivity" />
         </activity>
         <activity
             android:name="org.elva.elvaapp.ProjectActivity"
