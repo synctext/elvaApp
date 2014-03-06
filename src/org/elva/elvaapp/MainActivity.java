@@ -1,14 +1,9 @@
 package org.elva.elvaapp;
 
-import org.elva.elvaapp.model.Data;
-import org.elva.elvaapp.model.Location;
-import org.elva.elvaapp.model.Project;
-import org.elva.elvaapp.model.Question;
-import org.elva.elvaapp.model.Questionaire;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -24,7 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MainActivity extends ActionBarActivity implements LocationFragment.OnHeadlineSelectedListener {
+public class MainActivity extends ActionBarActivity implements LocationFragment.OnLocationSelectedListener {
 	private String[] mMenuItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -77,47 +72,22 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 				// onPrepareOptionsMenu()
 			}
 		};
-		loadTestData();
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-		if (savedInstanceState == null) {
+
+		SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+		int location = sharedPref.getInt("location", -1);
+
+		if (location > -1) {
+			selectItem(1);
+		} else {
 			selectItem(0);
 		}
 	}
 
-	public void loadTestData() {
-		Location location = new Location("test location");
-		Project project = new Project(location, "test project", "test desciption");
-		Questionaire questionaire = new Questionaire(project, "test questionaire");
-		Question question = new Question(questionaire, "test question");
-		
-		Location location2 = new Location("test location2");
-		Project project2 = new Project(location2, "test project", "test desciption2");
-		Questionaire questionaire2 = new Questionaire(project2, "test questionaire2");
-		Question question2 = new Question(questionaire2, "test question2");
-		
-		new Data();
-		Data.addLocation(location);
-		Data.addLocation(location2);
+	public void onLocationSelected(int position) {
+		selectItem(1);
 	}
-	
-	   public void onArticleSelected(int position) {
-	        // The user selected the headline of an article from the HeadlinesFragment
-
-	        // Capture the article fragment from the activity layout
-	        LocationFragment locationFrag = (LocationFragment)
-	                getSupportFragmentManager().findFragmentById(R.id.content_frame);
-
-	        if (locationFrag != null) {
-	            // If article frag is available, we're in two-pane layout...
-
-	            // Call a method in the ArticleFragment to update its content
-				selectItem(1);
-
-	        } else {
-
-	        }
-	    }
 
 	public void selectItem(int position) {
 		switch (position) {
@@ -171,12 +141,12 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 				break;
 			}
 			case 2: {
-				Intent intent = new Intent(getApplicationContext(), QuestionnaireActivity.class);
+				Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
 				startActivity(intent);
 				break;
 			}
 			case 3: {
-				Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
+				Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
 				startActivity(intent);
 				break;
 			}

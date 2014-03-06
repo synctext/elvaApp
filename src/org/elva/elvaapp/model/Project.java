@@ -7,9 +7,9 @@ public class Project {
 	private String name;
 	private String description;
 	private ArrayList<Questionaire> questionaires;
-	private Location location;
+	private ProjectLocation location;
 	
-	public Project(Location location, String name, String description){
+	public Project(ProjectLocation location, String name, String description){
 		this.name = name;
 		this.description = description;
 		this.location = location;
@@ -37,11 +37,11 @@ public class Project {
 		this.description = description;
 	}
 
-	public Location getLocation() {
+	public ProjectLocation getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(ProjectLocation location) {
 		this.location = location;
 	}
 	

@@ -2,19 +2,19 @@ package org.elva.elvaapp.model;
 
 import java.util.ArrayList;
 
-public class Location {
+public class ProjectLocation {
 
 	private String name;
 	private int xCoordinate;
 	private int yCoordinate;
 	private ArrayList<Project> projects;
 
-	public Location(String name) {
+	public ProjectLocation(String name) {
 		this.name = name;
 		projects = new ArrayList<Project>(); 
 	}
 
-	public Location(String name, int xCoordinate, int yCoordinate) {
+	public ProjectLocation(String name, int xCoordinate, int yCoordinate) {
 		this(name);
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
@@ -36,8 +36,8 @@ public class Location {
 		projects.add(project);
 	}
 
-	public ArrayList<Project> getProjects() {
-		return projects;
+	public Project getProject(int index) {
+		return projects.get(index);
 	}
 	
 	public void setProjects(ArrayList<Project> projects) {
