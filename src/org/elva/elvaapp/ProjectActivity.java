@@ -2,6 +2,8 @@ package org.elva.elvaapp;
 
 import org.elva.elvaapp.model.Data;
 import org.elva.elvaapp.model.Project;
+import org.elva.elvaapp.model.Question;
+import org.elva.elvaapp.model.Questionaire;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -48,7 +50,9 @@ public class ProjectActivity extends ActionBarActivity {
 		projectId = intent.getExtras().getInt("project");
 
 		Project project = Data.getLocation(locationId).getProject(projectId);
+		
 
+		
 		projectTitle = (TextView) findViewById(R.id.project_title);
 		t = Typeface.createFromAsset(this.getAssets(), "fonts/Roboto-Light.ttf");
 		projectTitle.setTypeface(t);
@@ -58,6 +62,7 @@ public class ProjectActivity extends ActionBarActivity {
 		projectDescription = (TextView) findViewById(R.id.project_description);
 		projectDescription.setTypeface(t);
 		projectDescription.setText(project.getDescription());
+		
 	}
 
 	private void setUpMap() {
@@ -93,7 +98,11 @@ public class ProjectActivity extends ActionBarActivity {
 
 	
 	public void startQuestionaire(View v){
-		Intent intent = new Intent(getApplicationContext(), ProjectsOverviewActivity.class);
+		Intent intent = new Intent(getApplicationContext(), QuestionnaireActivity.class);
+		intent.putExtra("project", projectId);
+		intent.putExtra("location", locationId);
+		intent.putExtra("questionaire", 0);
+
 		startActivity(intent);
 	}
 	

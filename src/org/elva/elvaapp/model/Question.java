@@ -41,7 +41,7 @@ public class Question {
 		this.answers = answers;
 	}
 	
-	public int questionType () {
+public int getQuestionType () {
 		return questionType;
 	}
 	

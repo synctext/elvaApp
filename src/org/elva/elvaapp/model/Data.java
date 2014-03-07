@@ -37,7 +37,11 @@ public class Data {
 		Project project = new Project(location, "test project", "test desciption");
 		Questionaire questionaire = new Questionaire(project, "test questionaire");
 		Question question = new Question(questionaire, "test question");
-		
+				
+		Question question3 = new Question(questionaire, "Wat is het probleem?", 1, new String [] {"Er is geen probleem", "Jij", "Rot op"});
+		Question question4 = new Question(questionaire, "Wat is het probleem?");
+		Question question5 = new Question(questionaire, "Hoeveel problemen heb je?", 2, new String []{"0", "100", "50"});
+				
 		ProjectLocation location2 = new ProjectLocation("test location2");
 		Project project2 = new Project(location2, "test project2", "test desciption2");
 		Questionaire questionaire2 = new Questionaire(project2, "test questionaire2");

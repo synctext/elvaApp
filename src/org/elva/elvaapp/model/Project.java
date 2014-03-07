@@ -20,6 +20,10 @@ public class Project {
 	public void addQuestionaire(Questionaire questionaire){
 		questionaires.add(questionaire);
 	}
+
+	public Questionaire getQuestionnaire (int index) {
+		return questionaires.get(index);
+	}
 	
 	public String getName() {
 		return name;
