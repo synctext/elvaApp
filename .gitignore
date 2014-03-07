@@ -3,6 +3,7 @@
 .classpath
 .settings
 .checkstyle
+.properties
 
 # IntelliJ IDEA
 .idea
