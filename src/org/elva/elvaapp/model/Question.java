@@ -5,7 +5,7 @@ public class Question {
 	private String question;
 	private Questionaire questionaire;
 	private int questionType; // 0 = Text, 1 = Radio, 2 = Seekbar
-	private String answers;
+	private String [] answers;
 	
 	
 	// Default text question
@@ -17,7 +17,7 @@ public class Question {
 	}
 	
 	// With type: 0 = Text, 1 = Radio, 2 = Seekbar
-	public Question(Questionaire questionaire, String question, int questionType, String answers){
+	public Question(Questionaire questionaire, String question, int questionType, String [] answers){
 		this.questionaire = questionaire;
 		this.question = question;
 		this.questionType = questionType;
@@ -31,6 +31,22 @@ public class Question {
 
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+	
+	public String [] getAnswers () {
+		return answers;
+	}
+	
+	public void setAnswers(String [] answers){
+		this.answers = answers;
+	}
+	
+	public int questionType () {
+		return questionType;
+	}
+	
+	public void setQuestionType(int questionType){
+		this.questionType = questionType;
 	}
 	
 
