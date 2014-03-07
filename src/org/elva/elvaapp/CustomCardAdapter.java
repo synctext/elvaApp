@@ -115,10 +115,9 @@ public class CustomCardAdapter extends CardAdapter implements
 
 		// TextCard
 		if (item.getClass().getSimpleName().equals("TextCard")) {
-			RelativeLayout rl = (RelativeLayout) recycled
-					.findViewById(R.id.inner_frame);
-			EditText et = new EditText(this.getContext());
-			et.setId(1);
+			((TextCard) item).setView(recycled);
+
+
 
 		}
 		return super.onViewCreated(index, recycled, item);

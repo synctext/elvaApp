@@ -24,54 +24,25 @@ public class ProjectsOverviewActivity extends ActionBarActivity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		
-		CardListView list = (CardListView)findViewById(android.R.id.list);
-
-		CustomCardAdapter adapter = (CustomCardAdapter) new CustomCardAdapter(this)
-	    .setAccentColorRes(android.R.color.holo_blue_dark);
-		adapter.add(new RadioCard("Question?", new String[] {"Ankit","Bohra","Xyz"}));
-		
-
-		
-
-//		
-//		CustomCardAdapter adapter = new CustomCardAdapter(this)
-//		    // This sets the color displayed for card titles and header actions by default
-//		    .setAccentColorRes(R.color.ELVA_BLUE);
-
-		
-//		// Add a basic header and three cards below it
-//		adapter.add(new CardHeader("Open projects"));
-//		adapter.add(new Card(this, "Test", R.layout.question_radio_group));
-//		adapter.add(new Card("Project 1", "This project is about garbage in the streets of Groningen"));
-//		adapter.add(new Card("Project 2", "Example 2"));
-//		adapter.add(new Card("Project 3", "Example 3"));
-//		
-//		Card test = adapter.getItem(1);
-//		test.setLayout(R.layout.question_radio_group);
+//		CardListView list = (CardListView)findViewById(android.R.id.list);
 //
-//		// Add a header with a subtitle and action, along with 3 more cards below it
-//		adapter.add(new CardHeader("Private projects").setAction("Locked", new CardHeader.ActionListener() {
+//		CustomCardAdapter adapter = (CustomCardAdapter) new CustomCardAdapter(this)
+//	    .setAccentColorRes(android.R.color.holo_blue_dark);
+//		adapter.add(new RadioCard("Question?", new String[] {"Ankit","Bohra","Xyz"}));
+//
+//
+//		list.setAdapter(adapter);
+//		
+//		list.setOnCardClickListener(new CardListView.CardClickListener() {
 //		    @Override
-//		    public void onClick(CardHeader header) {
-//		        Toast.makeText(getApplicationContext(), header.getActionTitle(), Toast.LENGTH_SHORT).show();
+//		    public void onCardClick(int index, CardBase card, View view) {
+//		        // Do what you want here
+//		    	Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
+//		    	intent.putExtra("cardTitle", card.getTitle());
+//				startActivity(intent);
 //		    }
-//		}));
-//		adapter.add(new Card("Four", "Example 4"));
-//		adapter.add(new Card("Five", "Example 5"));
-//		adapter.add(new Card("Six", "Example 6"));
-
-		list.setAdapter(adapter);
-		
-		list.setOnCardClickListener(new CardListView.CardClickListener() {
-		    @Override
-		    public void onCardClick(int index, CardBase card, View view) {
-		        // Do what you want here
-		    	Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
-		    	intent.putExtra("cardTitle", card.getTitle());
-				startActivity(intent);
-		    }
-
-		});
+//
+//		});
 	}
 
 	

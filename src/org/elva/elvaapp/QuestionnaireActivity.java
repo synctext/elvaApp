@@ -6,7 +6,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -27,6 +29,7 @@ public class QuestionnaireActivity extends ActionBarActivity {
 		actionBar.setHomeButtonEnabled(true);
 
 		CardListView list = (CardListView)findViewById(android.R.id.list);
+		list.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 
 		final CustomCardAdapter adapter = (CustomCardAdapter) new CustomCardAdapter(this)
 		.setAccentColorRes(android.R.color.holo_blue_dark);
@@ -66,6 +69,13 @@ public class QuestionnaireActivity extends ActionBarActivity {
 						SeekBar sb =(SeekBar)((SeekBarCard)adapter.getItem(i)).getView().findViewById(R.id.seekbar);
 						int progress = sb.getProgress();
 						String toast = "" + progress;
+						Toast.makeText(getApplicationContext(), toast, Toast.LENGTH_LONG).show();
+					}
+					
+					// If it is a TextCard
+					if(adapter.getItem(i).getClass().getSimpleName().equals("TextCard") ) {
+						EditText et = (EditText)((TextCard)adapter.getItem(i)).getView().findViewById(R.id.textInput);
+						String toast = "" + et.getText();
 						Toast.makeText(getApplicationContext(), toast, Toast.LENGTH_LONG).show();
 					}
 				}
