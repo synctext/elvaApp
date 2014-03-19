@@ -37,3 +37,5 @@ tmp
 
 /bin
 /gen
+*.properties
+*.properties

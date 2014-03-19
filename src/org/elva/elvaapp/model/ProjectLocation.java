@@ -24,10 +24,22 @@ public class ProjectLocation {
 		return name;
 	}
 	
-	public ArrayList<String> getProjectNames() {
+	public ArrayList<String> getPublicProjectNames() {
 		ArrayList<String> names = new ArrayList<String>();
 		for (Project project : projects) {
-			names.add(project.getName());
+			if(!project.isPrivate()){
+				names.add(project.getName());
+			}
+		}
+		return names;
+	}
+	
+	public ArrayList<String> getPrivateProjectNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		for (Project project : projects) {
+			if(project.isPrivate()){
+				names.add(project.getName());
+			}
 		}
 		return names;
 	}

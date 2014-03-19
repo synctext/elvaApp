@@ -6,12 +6,24 @@ public class Project {
 
 	private String name;
 	private String description;
+	private boolean isPrivate;
 	private ArrayList<Questionaire> questionaires;
 	private ProjectLocation location;
+	
 	
 	public Project(ProjectLocation location, String name, String description){
 		this.name = name;
 		this.description = description;
+		this.isPrivate = false;
+		this.location = location;
+		questionaires = new ArrayList<Questionaire>();
+		location.addProject(this);
+	}
+	
+	public Project(ProjectLocation location, String name, String description, boolean isPrivate){
+		this.name = name;
+		this.description = description;
+		this.isPrivate = isPrivate;
 		this.location = location;
 		questionaires = new ArrayList<Questionaire>();
 		location.addProject(this);
@@ -51,6 +63,14 @@ public class Project {
 	
 	public String toString(){
 		return name;		
+	}
+	
+	public boolean isPrivate(){
+		return isPrivate;
+	}
+	
+	public void setPrivate(){
+		isPrivate = true;;
 	}
 
 }
