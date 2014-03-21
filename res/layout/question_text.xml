@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/card_outer"
-    android:descendantFocusability="afterDescendants" >
+    android:descendantFocusability="afterDescendants">
 
     <RelativeLayout
         android:id="@+id/inner_frame"
@@ -42,7 +42,8 @@
             android:gravity="top"
             android:inputType="textMultiLine"
             android:lines="@integer/six"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+           >
         </EditText>
     </RelativeLayout>
 

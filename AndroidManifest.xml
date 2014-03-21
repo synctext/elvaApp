@@ -65,7 +65,8 @@
         </activity>
         <activity
             android:name="org.elva.elvaapp.QuestionnaireActivity"
-            android:label="@string/title_activity_questionnaire" >
+            android:label="@string/title_activity_questionnaire" 
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

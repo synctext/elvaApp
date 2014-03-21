@@ -16,7 +16,8 @@
 
         </RelativeLayout>
 
-        <org.elva.elvaapp.cards.SilkTextView android:id="@android:id/content" style="@style/card_content"/>
+        <org.elva.elvaapp.cards.SilkTextView android:id="@android:id/content" style="@style/card_content"
+            />
 
     </RelativeLayout>
 

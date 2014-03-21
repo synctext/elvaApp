@@ -46,6 +46,8 @@ public class QuestionnaireActivity extends ActionBarActivity {
 		actionBar.setHomeButtonEnabled(true);
 
 		CardListView list = (CardListView)findViewById(android.R.id.list);
+//		list.setItemsCanFocus(true);
+
 		list.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 
 		adapter = (CustomCardAdapter) new CustomCardAdapter(this)
