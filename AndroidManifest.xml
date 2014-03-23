@@ -10,6 +10,8 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -46,6 +48,8 @@
         <activity
             android:name="org.elva.elvaapp.ProjectsOverviewActivity"
             android:label="@string/title_activity_projects_overview"
+            android:configChanges="orientation"
+    		android:screenOrientation="portrait"
             android:parentActivityName="org.elva.elvaapp.ProjectActivity" >
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -56,6 +60,8 @@
         <activity
             android:name="org.elva.elvaapp.ProjectActivity"
             android:label="@string/title_activity_project"
+            android:configChanges="orientation"
+    		android:screenOrientation="portrait"
             android:parentActivityName="org.elva.elvaapp.MainActivity" >
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -65,7 +71,9 @@
         </activity>
         <activity
             android:name="org.elva.elvaapp.QuestionnaireActivity"
-            android:label="@string/title_activity_questionnaire" 
+            android:label="@string/title_activity_questionnaire"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+    		android:screenOrientation="portrait" 
             android:windowSoftInputMode="adjustPan">
         </activity>
     </application>

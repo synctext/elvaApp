@@ -3,22 +3,36 @@ package org.elva.elvaapp;
 import org.elva.elvaapp.cards.*;
 
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.View;
+import android.widget.ImageView;
 
-public class TextCard implements CardBase<TextCard> {
+public class PhotoCard implements CardBase<PhotoCard> {
     private int mIndex;
+    private String [] mOptions;
     private String title;
     private View View;
-    private String answer;
+    private ImageView image;
+    private Uri imageLocation;
+    private Boolean wantsPhoto;
 
-    public TextCard(int index) {
+    public PhotoCard(int index, String[] options) {
         mIndex = index;
+        mOptions = options;
+        wantsPhoto = false;
        
     }
     
-    public TextCard(String ntitle) {
+    public PhotoCard(String ntitle, String[] options) {
         title = ntitle;
+        mOptions = options;
+        wantsPhoto = false;
+
        
+    }
+    
+    public String [] getOptions() {
+    	return mOptions;
     }
 
     public void setView(View v) {
@@ -29,16 +43,24 @@ public class TextCard implements CardBase<TextCard> {
     	return View;
     }
     
-    public void setAnswer(String text){
-    	answer = text;
+    public void setImagePath(Uri u){
+    	imageLocation = u;
     }
     
-    public String getAnswer(){
-    	return answer;
+    public Uri getImagePath(){
+    	return imageLocation;
+    }
+    
+    public void setWantsPhoto(Boolean bool){
+    	wantsPhoto = bool;
+    }
+    
+    public Boolean wantsPhoto(){
+    	return wantsPhoto;
     }
     @Override
     public int getLayout() {
-        return R.layout.question_text;
+        return R.layout.question_camera;
     }
 
     @Override
@@ -58,7 +80,8 @@ public class TextCard implements CardBase<TextCard> {
 
     @Override
     public boolean isClickable() {
-        return true;
+        // The card will not respond to being tapped
+        return false;
     }
 
     @Override
@@ -78,7 +101,7 @@ public class TextCard implements CardBase<TextCard> {
     }
 
     @Override
-    public Card.CardMenuListener<TextCard> getPopupListener() {
+    public Card.CardMenuListener<PhotoCard> getPopupListener() {
         return null;
     }
 
@@ -98,10 +121,9 @@ public class TextCard implements CardBase<TextCard> {
     }
 
     @Override
-    public boolean equalTo(TextCard other) {
+    public boolean equalTo(PhotoCard other) {
         return mIndex == other.mIndex;
     }
     
 
 }
-

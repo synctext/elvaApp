@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- suppress AndroidLintUselessParent -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/card_outer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="afterDescendants" >
+
+    <RelativeLayout
+        android:id="@+id/inner_frame"
+        style="@style/card_inner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- suppress AndroidLintContentDescription -->
+
+        <ImageView
+            android:id="@android:id/icon"
+            style="@style/card_thumbnail"
+            tools:ignore="ContentDescription" />
+
+        <RelativeLayout
+            android:id="@+id/titleFrame"
+            style="@style/card_title_frame" >
+
+            <TextView
+                android:id="@android:id/title"
+                style="@style/card_title" />
+
+            <!-- suppress AndroidLintContentDescription -->
+
+            <ImageButton
+                android:id="@android:id/button1"
+                style="@style/card_popup_anchor"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleFrame"
+            android:scaleType="fitCenter"
+          />
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imagePreview"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/takePicture"
+                style="@style/Widget.AppCompat.ActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="From camera" />
+
+            <Button
+                android:id="@+id/takePictureFromGallery"
+                style="@style/Widget.AppCompat.Light.ActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="From gallery" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- suppress AndroidLintContentDescription -->
+
+    <ImageView
+        style="@style/card_shadow"
+        android:layout_height="wrap_content"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>
