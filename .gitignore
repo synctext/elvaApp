@@ -39,3 +39,4 @@ tmp
 /gen
 *.properties
 *.properties
+bin/AndroidManifest.xml
