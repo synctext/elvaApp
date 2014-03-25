@@ -8,9 +8,13 @@
         style="?android:attr/listSeparatorTextViewStyle"
         android:id="@+id/separator"
         android:text="Header"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#757678"
-        android:textColor="#f5c227" />
+        android:background="@color/ELVA_BLUE"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

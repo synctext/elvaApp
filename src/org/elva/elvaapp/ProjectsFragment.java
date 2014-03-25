@@ -20,18 +20,19 @@ import android.widget.TextView;
 public class ProjectsFragment extends ListFragment {
 
 	private int location;
+
 	public enum RowType {
 		LIST_ITEM, HEADER_ITEM
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-	
+
 		Intent intent = new Intent(getActivity().getApplicationContext(), ProjectActivity.class);
-		if(position>0){		
-		intent.putExtra("project", position-1);
-		intent.putExtra("location", location);
-		startActivity(intent);
+		if (position > 0) {
+			intent.putExtra("project", position - 1);
+			intent.putExtra("location", location);
+			startActivity(intent);
 		}
 	}
 
@@ -73,6 +74,7 @@ public class ProjectsFragment extends ListFragment {
 
 		TwoTextArrayAdapter adapter = new TwoTextArrayAdapter(inflater.getContext(), items);
 		setListAdapter(adapter);
+
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 
@@ -128,6 +130,7 @@ public class ProjectsFragment extends ListFragment {
 			} else {
 				view = convertView;
 			}
+			// view.setBackground(getResources().getDrawable((R.drawable.listselector)));
 
 			TextView text = (TextView) view.findViewById(R.id.separator);
 			text.setText(name);

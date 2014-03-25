@@ -9,5 +9,8 @@
     <color name="card_pressed_header">#d6d6d6</color>
     <color name="header_button_default">#494949</color>
     <color name="card_gray">#e5e5e5</color>
-
+	<drawable name="normal">#FFFFFF</drawable>
+	<drawable name="pressed">#99C6DB</drawable>
+	<drawable name="selected">#99C6DB</drawable>
+		
 </resources>

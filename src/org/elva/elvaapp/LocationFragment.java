@@ -31,6 +31,7 @@ public class LocationFragment extends ListFragment {
     	SharedPreferences.Editor editor = sharedPref.edit();
     	editor.putInt("location", position); // er rekening mee houden dat de position van location kan veranderen
     	editor.commit();
+    	
 		mCallback.onLocationSelected(position);
 	}
 

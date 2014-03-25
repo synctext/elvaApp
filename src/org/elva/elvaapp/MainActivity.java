@@ -26,7 +26,8 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 	private ActionBarDrawerToggle mDrawerToggle;
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-
+	
+	
 	// private Typeface t;
 	// private TextView projectTitle;
 	// private TextView projectDescription;
@@ -40,7 +41,7 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
-		actionBar.setBackgroundDrawable(getResources().getDrawable(R.color.ELVA_WHITE));
+		//actionBar.setBackgroundDrawable(getResources().getDrawable(R.color.ELVA_GREY));
 
 		// Setup menuDrawer
 		mMenuItems = getResources().getStringArray(R.array.menu_array);
@@ -159,6 +160,8 @@ public class MainActivity extends ActionBarActivity implements LocationFragment.
 
 		}
 	}
+	
+	
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
